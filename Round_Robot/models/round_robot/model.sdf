@@ -3396,23 +3396,7 @@
       <odom_publish_frequency>50</odom_publish_frequency>
     </plugin>
     <!-- Differential Drive Controller -->
-<plugin
-    filename="gz-sim-diff-drive-system"
-    name="gz::sim::systems::DiffDrive">
 
-    <left_joint>left_wheel_joint</left_joint>
-    <right_joint>right_wheel_joint</right_joint>
-
-    <wheel_separation>0.10</wheel_separation>
-    <wheel_radius>0.025</wheel_radius>
-
-    <topic>/model/round_robot/cmd_vel</topic>
-    <odom_topic>/model/round_robot/odometry</odom_topic>
-
-    <frame_id>odom</frame_id>
-    <child_frame_id>base_link</child_frame_id>
-    <odom_publish_frequency>50</odom_publish_frequency>
-    </plugin>
 
     <!-- Wheel Joint State Publisher: NEW -->
     <plugin
@@ -3425,6 +3409,20 @@
         <joint_name>right_wheel_joint</joint_name>
 
         <update_rate>50</update_rate>
+    </plugin>
+
+    <!-- Gazebo ground-truth pose: for evaluation only, never navigation -->
+    <plugin filename="gz-sim-pose-publisher-system"
+            name="gz::sim::systems::PosePublisher">
+      <publish_model_pose>true</publish_model_pose>
+      <publish_nested_model_pose>true</publish_nested_model_pose>
+      <publish_link_pose>false</publish_link_pose>
+      <publish_visual_pose>false</publish_visual_pose>
+      <publish_collision_pose>false</publish_collision_pose>
+      <publish_sensor_pose>false</publish_sensor_pose>
+      <use_pose_vector_msg>false</use_pose_vector_msg>
+      <topic>/model/round_robot/ground_truth</topic>
+      <update_frequency>50</update_frequency>
     </plugin>
   </model>
 </sdf>

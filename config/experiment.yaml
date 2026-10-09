@@ -1,0 +1,7 @@
+# Experiment uncertainty (NOT robot geometry and NOT navigation goals)
+odometry_noise:
+  # Gaussian measurement errors applied to Δs and Δθ EACH 50-Hz joint sample
+  # per Week 2 slide 33. Set both to 0.0 for a baseline experiment.
+  distance_std_m: 0.0002
+  heading_std_rad: 0.001
+  seed: 42

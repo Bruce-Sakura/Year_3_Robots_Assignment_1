@@ -1,6 +1,6 @@
 import rclpy
 
-from controller.robot_auto_controller import RobotAutoController
+from src.controller.robot_auto_controller import RobotAutoController
 
 
 def main():
@@ -9,8 +9,7 @@ def main():
 
     try:
         robot = RobotAutoController()
-
-        # Move to target
+        # External navigation goal: only x and y, no final heading adjustment.
         robot.go_to(1.0, 1.0)
 
     except TimeoutError as error:

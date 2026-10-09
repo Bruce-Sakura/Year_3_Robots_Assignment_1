@@ -3395,5 +3395,36 @@
       <child_frame_id>base_link</child_frame_id>
       <odom_publish_frequency>50</odom_publish_frequency>
     </plugin>
+    <!-- Differential Drive Controller -->
+<plugin
+    filename="gz-sim-diff-drive-system"
+    name="gz::sim::systems::DiffDrive">
+
+    <left_joint>left_wheel_joint</left_joint>
+    <right_joint>right_wheel_joint</right_joint>
+
+    <wheel_separation>0.10</wheel_separation>
+    <wheel_radius>0.025</wheel_radius>
+
+    <topic>/model/round_robot/cmd_vel</topic>
+    <odom_topic>/model/round_robot/odometry</odom_topic>
+
+    <frame_id>odom</frame_id>
+    <child_frame_id>base_link</child_frame_id>
+    <odom_publish_frequency>50</odom_publish_frequency>
+    </plugin>
+
+    <!-- Wheel Joint State Publisher: NEW -->
+    <plugin
+        filename="gz-sim-joint-state-publisher-system"
+        name="gz::sim::systems::JointStatePublisher">
+
+        <topic>/model/round_robot/joint_states</topic>
+
+        <joint_name>left_wheel_joint</joint_name>
+        <joint_name>right_wheel_joint</joint_name>
+
+        <update_rate>50</update_rate>
+    </plugin>
   </model>
 </sdf>

@@ -7,7 +7,7 @@ cd "$(dirname "$(realpath "$0")")"
 # 初始化 ROS 2 Jazzy
 source /opt/ros/jazzy/setup.bash
 
-# 模型包所在目录；如果没改文件夹名，改成 Round_Robot_100mm
+# Gazebo 模型目录
 ROBOT_DIR="$PWD/Round_Robot"
 
 # Gazebo 模型搜索路径
@@ -20,13 +20,15 @@ GAZEBO_PID=$!
 
 echo "Starting ROS 2 Bridge..."
 
-# 使用新模型的 Gazebo 话题，并映射为 ROS 的 /cmd_vel 和 /odom
+# ROS /cmd_vel -> Gazebo DiffDrive; Gazebo odom and wheel encoders -> ROS
 ros2 run ros_gz_bridge parameter_bridge \
     '/model/round_robot/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist' \
     '/model/round_robot/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry' \
+    '/model/round_robot/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model' \
     --ros-args \
     -r /model/round_robot/cmd_vel:=/cmd_vel \
-    -r /model/round_robot/odometry:=/odom &
+    -r /model/round_robot/odometry:=/odom \
+    -r /model/round_robot/joint_states:=/joint_states &
 BRIDGE_PID=$!
 
 cleanup() {

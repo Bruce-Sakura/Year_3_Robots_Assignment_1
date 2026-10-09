@@ -25,10 +25,12 @@ ros2 run ros_gz_bridge parameter_bridge \
     '/model/round_robot/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist' \
     '/model/round_robot/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry' \
     '/model/round_robot/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model' \
+    '/model/round_robot/ground_truth@geometry_msgs/msg/PoseStamped[gz.msgs.Pose' \
     --ros-args \
     -r /model/round_robot/cmd_vel:=/cmd_vel \
     -r /model/round_robot/odometry:=/odom \
-    -r /model/round_robot/joint_states:=/joint_states &
+    -r /model/round_robot/joint_states:=/joint_states \
+    -r /model/round_robot/ground_truth:=/ground_truth &
 BRIDGE_PID=$!
 
 cleanup() {

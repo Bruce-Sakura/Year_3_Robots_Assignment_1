@@ -1,0 +1,1 @@
+time_s,x_est_m,y_est_m,theta_est_rad,x_clean_m,y_clean_m,theta_clean_rad,x_gt_m,y_gt_m,theta_gt_rad,position_error_m,clean_error_m,heading_error_rad

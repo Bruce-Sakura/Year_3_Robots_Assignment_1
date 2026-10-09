@@ -1,16 +1,34 @@
-# This is a sample Python script.
+import rclpy
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from controller.robot_auto_controller import RobotAutoController
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    rclpy.init()
+    robot = None
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    try:
+        robot = RobotAutoController()
+
+        # Move to target
+        robot.go_to(1.0, 1.0)
+
+    except TimeoutError as error:
+        if robot is not None:
+            robot.get_logger().error(str(error))
+
+    except KeyboardInterrupt:
+        pass
+
+    finally:
+        if robot is not None:
+            robot.stop()
+            robot.close_log()
+            robot.destroy_node()
+
+        if rclpy.ok():
+            rclpy.shutdown()
+
+
+if __name__ == "__main__":
+    main()

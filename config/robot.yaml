@@ -1,0 +1,5 @@
+robot_controller:
+  ros__parameters: # m
+    left_wheel_radius: 0.025
+    right_wheel_radius: 0.025
+    wheel_separation: 0.10

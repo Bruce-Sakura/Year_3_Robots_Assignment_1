@@ -1,0 +1,3399 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.9">
+  <model name="round_robot" canonical_link="base_link">
+    <static>false</static>
+    <self_collide>false</self_collide>
+    <frame name="model_center" attached_to="base_link">
+      <pose relative_to="base_link">0 0 -0.0125 0 0 0</pose>
+    </frame>
+    <frame name="base_footprint" attached_to="base_link">
+      <pose relative_to="base_link">0 0 -0.025 0 0 0</pose>
+    </frame>
+    <link name="base_link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.22</mass>
+        <inertia>
+          <ixx>0.00015</ixx>
+          <iyy>0.00018</iyy>
+          <izz>0.00023</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="circular_chassis">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/circular_chassis.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.02500000037252903 0.2800000011920929 0.6499999761581421 1.0</ambient>
+          <diffuse>0.02500000037252903 0.2800000011920929 0.6499999761581421 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_axle">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_axle.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_vertical_axle_bracket">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_vertical_axle_bracket.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_motor">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_motor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1.0 0.3400000035762787 0.03500000014901161 1.0</ambient>
+          <diffuse>1.0 0.3400000035762787 0.03500000014901161 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_motor_foot_-0.004">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_motor_foot_-0.004.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_motor_foot_0.004">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_motor_foot_0.004.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_axle">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_axle.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_vertical_axle_bracket">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_vertical_axle_bracket.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_motor">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_motor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1.0 0.3400000035762787 0.03500000014901161 1.0</ambient>
+          <diffuse>1.0 0.3400000035762787 0.03500000014901161 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_motor_foot_-0.004">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_motor_foot_-0.004.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_motor_foot_0.004">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_motor_foot_0.004.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_standoff_-0.039_-0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_standoff_-0.039_-0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_screw_-0.039_-0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_screw_-0.039_-0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_standoff_-0.039_0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_standoff_-0.039_0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_screw_-0.039_0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_screw_-0.039_0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_standoff_0.019_-0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_standoff_0.019_-0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_screw_0.019_-0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_screw_0.019_-0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_standoff_0.019_0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_standoff_0.019_0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_screw_0.019_0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_screw_0.019_0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_rack_rail_-0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_rack_rail_-0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_rack_rail_0.0245">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_rack_rail_0.0245.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="Pi6_CONCEPT_PCB_using_Pi5_dimensions">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/Pi6_CONCEPT_PCB_using_Pi5_dimensions.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.02500000037252903 0.30000001192092896 0.08500000089406967 1.0</ambient>
+          <diffuse>0.02500000037252903 0.30000001192092896 0.08500000089406967 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_processor">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_processor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_memory">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_memory.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_port_shield_-0.017">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_port_shield_-0.017.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_port_opening_-0.017">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_port_opening_-0.017.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_port_shield_0">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_port_shield_0.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_port_opening_0">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_port_opening_0.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_port_shield_0.017">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_port_shield_0.017.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_port_opening_0.017">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_port_opening_0.017.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_GPIO_header">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_GPIO_header.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_0_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_0_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_0_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_0_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_1_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_1_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_1_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_1_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_2_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_2_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_2_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_2_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_3_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_3_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_3_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_3_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_4_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_4_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_4_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_4_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_5_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_5_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_5_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_5_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_6_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_6_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_6_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_6_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_7_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_7_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_7_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_7_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_8_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_8_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_8_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_8_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_9_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_9_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_9_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_9_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_10_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_10_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_10_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_10_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_11_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_11_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_11_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_11_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_12_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_12_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_12_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_12_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_13_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_13_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_13_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_13_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_14_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_14_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_14_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_14_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_15_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_15_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_15_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_15_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_16_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_16_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_16_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_16_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_17_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_17_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_17_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_17_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_18_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_18_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_18_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_18_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_19_0.0217">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_19_0.0217.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="gpio_pin_19_0.0243">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/gpio_pin_19_0.0243.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</ambient>
+          <diffuse>0.800000011920929 0.5600000023841858 0.10000000149011612 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="pi_power_socket">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/pi_power_socket.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="motor_driver_PCB">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/motor_driver_PCB.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.02500000037252903 0.30000001192092896 0.08500000089406967 1.0</ambient>
+          <diffuse>0.02500000037252903 0.30000001192092896 0.08500000089406967 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="motor_driver_chip">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/motor_driver_chip.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="driver_terminal_-0.011">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/driver_terminal_-0.011.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.02500000037252903 0.2800000011920929 0.6499999761581421 1.0</ambient>
+          <diffuse>0.02500000037252903 0.2800000011920929 0.6499999761581421 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="driver_terminal_0.011">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/driver_terminal_0.011.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.02500000037252903 0.2800000011920929 0.6499999761581421 1.0</ambient>
+          <diffuse>0.02500000037252903 0.2800000011920929 0.6499999761581421 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_motor_wire_plus">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_motor_wire_plus.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.6800000071525574 0.017999999225139618 0.017999999225139618 1.0</ambient>
+          <diffuse>0.6800000071525574 0.017999999225139618 0.017999999225139618 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_motor_wire_minus">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_motor_wire_minus.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_motor_wire_plus">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_motor_wire_plus.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.6800000071525574 0.017999999225139618 0.017999999225139618 1.0</ambient>
+          <diffuse>0.6800000071525574 0.017999999225139618 0.017999999225139618 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_motor_wire_minus">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_motor_wire_minus.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="GPIO_PWM_left">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/GPIO_PWM_left.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.949999988079071 0.6800000071525574 0.02500000037252903 1.0</ambient>
+          <diffuse>0.949999988079071 0.6800000071525574 0.02500000037252903 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="GPIO_PWM_right">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/GPIO_PWM_right.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3400000035762787 0.07999999821186066 0.6499999761581421 1.0</ambient>
+          <diffuse>0.3400000035762787 0.07999999821186066 0.6499999761581421 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="GPIO_common_ground">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/GPIO_common_ground.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="power_harness_positive">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/power_harness_positive.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.6800000071525574 0.017999999225139618 0.017999999225139618 1.0</ambient>
+          <diffuse>0.6800000071525574 0.017999999225139618 0.017999999225139618 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="power_harness_negative">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/power_harness_negative.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</ambient>
+          <diffuse>0.01600000075995922 0.01600000075995922 0.01600000075995922 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="front_ball_socket">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/front_ball_socket.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="rear_ball_socket">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/rear_ball_socket.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</ambient>
+          <diffuse>0.2199999988079071 0.25999999046325684 0.30000001192092896 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="elevated_PCB">
+        <pose>0 0 0.0188 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.085 0.056 0.0016</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name="deck_middle">
+        <pose>0 0 -0.0125 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.048 0.080 0.005</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name="deck_front">
+        <pose>0.032 0 -0.0125 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.016 0.056 0.005</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name="deck_rear">
+        <pose>-0.032 0 -0.0125 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.016 0.056 0.005</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    <link name="left_wheel">
+      <pose>0 0.05 0 0 0 0</pose>
+      <inertial>
+        <mass>0.025</mass>
+        <inertia>
+          <ixx>4.20625e-06</ixx>
+          <iyy>7.8125e-06</iyy>
+          <izz>4.20625e-06</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="left_tire">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tire.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_hub">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_hub.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1.0 0.3400000035762787 0.03500000014901161 1.0</ambient>
+          <diffuse>1.0 0.3400000035762787 0.03500000014901161 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_0_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_0_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_0_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_0_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_1_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_1_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_1_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_1_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_2_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_2_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_2_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_2_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_3_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_3_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_3_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_3_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_4_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_4_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_4_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_4_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_5_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_5_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_5_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_5_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_6_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_6_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_6_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_6_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_7_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_7_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_7_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_7_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_8_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_8_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_8_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_8_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_9_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_9_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_9_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_9_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_10_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_10_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_10_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_10_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_11_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_11_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_11_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_11_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_12_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_12_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_12_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_12_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_13_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_13_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_13_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_13_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_14_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_14_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_14_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_14_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_15_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_15_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_15_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_15_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_16_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_16_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_16_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_16_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_17_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_17_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_17_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_17_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_18_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_18_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_18_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_18_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_19_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_19_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_19_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_19_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_20_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_20_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_20_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_20_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_21_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_21_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_21_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_21_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_22_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_22_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_22_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_22_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_23_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_23_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_23_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_23_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_24_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_24_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_24_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_24_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_25_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_25_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_25_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_25_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_26_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_26_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_26_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_26_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_27_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_27_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_27_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_27_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_28_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_28_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_28_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_28_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_29_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_29_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_29_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_29_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_30_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_30_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_30_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_30_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_31_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_31_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_31_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_31_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_32_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_32_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_32_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_32_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_33_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_33_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_33_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_33_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_34_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_34_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_34_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_34_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_35_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_35_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_35_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_35_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_36_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_36_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_36_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_36_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_37_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_37_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_37_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_37_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_38_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_38_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_38_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_38_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_39_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_39_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_39_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_39_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_40_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_40_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_40_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_40_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_41_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_41_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_41_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_41_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_42_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_42_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_42_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_42_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_43_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_43_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_43_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_43_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_44_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_44_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_44_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_44_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_45_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_45_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_45_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_45_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_46_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_46_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_46_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_46_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_47_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_47_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="left_tread_47_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/left_tread_47_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="tire">
+        <pose>0 0 0 1.57079632679 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.012</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    <link name="right_wheel">
+      <pose>0 -0.05 0 0 0 0</pose>
+      <inertial>
+        <mass>0.025</mass>
+        <inertia>
+          <ixx>4.20625e-06</ixx>
+          <iyy>7.8125e-06</iyy>
+          <izz>4.20625e-06</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="right_tire">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tire.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_hub">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_hub.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1.0 0.3400000035762787 0.03500000014901161 1.0</ambient>
+          <diffuse>1.0 0.3400000035762787 0.03500000014901161 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_0_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_0_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_0_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_0_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_1_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_1_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_1_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_1_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_2_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_2_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_2_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_2_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_3_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_3_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_3_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_3_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_4_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_4_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_4_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_4_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_5_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_5_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_5_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_5_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_6_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_6_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_6_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_6_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_7_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_7_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_7_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_7_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_8_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_8_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_8_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_8_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_9_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_9_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_9_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_9_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_10_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_10_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_10_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_10_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_11_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_11_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_11_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_11_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_12_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_12_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_12_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_12_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_13_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_13_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_13_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_13_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_14_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_14_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_14_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_14_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_15_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_15_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_15_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_15_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_16_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_16_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_16_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_16_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_17_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_17_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_17_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_17_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_18_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_18_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_18_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_18_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_19_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_19_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_19_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_19_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_20_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_20_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_20_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_20_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_21_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_21_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_21_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_21_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_22_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_22_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_22_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_22_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_23_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_23_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_23_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_23_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_24_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_24_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_24_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_24_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_25_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_25_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_25_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_25_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_26_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_26_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_26_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_26_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_27_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_27_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_27_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_27_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_28_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_28_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_28_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_28_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_29_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_29_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_29_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_29_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_30_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_30_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_30_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_30_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_31_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_31_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_31_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_31_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_32_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_32_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_32_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_32_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_33_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_33_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_33_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_33_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_34_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_34_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_34_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_34_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_35_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_35_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_35_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_35_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_36_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_36_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_36_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_36_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_37_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_37_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_37_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_37_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_38_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_38_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_38_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_38_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_39_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_39_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_39_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_39_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_40_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_40_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_40_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_40_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_41_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_41_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_41_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_41_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_42_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_42_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_42_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_42_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_43_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_43_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_43_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_43_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_44_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_44_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_44_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_44_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_45_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_45_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_45_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_45_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_46_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_46_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_46_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_46_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_47_-1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_47_-1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <visual name="right_tread_47_1">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/right_tread_47_1.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</ambient>
+          <diffuse>0.03500000014901161 0.03999999910593033 0.04500000178813934 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="tire">
+        <pose>0 0 0 1.57079632679 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.025</radius>
+            <length>0.012</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    <link name="front_ball">
+      <pose>0.036 0 -0.020 0 0 0</pose>
+      <inertial>
+        <mass>0.004</mass>
+        <inertia>
+          <ixx>4e-08</ixx>
+          <iyy>4e-08</iyy>
+          <izz>4e-08</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="front_steel_ball">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/front_steel_ball.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+          <specular>0.9 0.9 0.9 1</specular>
+        </material>
+      </visual>
+      <collision name="steel_ball">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    <link name="rear_ball">
+      <pose>-0.036 0 -0.020 0 0 0</pose>
+      <inertial>
+        <mass>0.004</mass>
+        <inertia>
+          <ixx>4e-08</ixx>
+          <iyy>4e-08</iyy>
+          <izz>4e-08</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="rear_steel_ball">
+        <geometry>
+          <mesh>
+            <uri>model://round_robot/meshes/rear_steel_ball.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</ambient>
+          <diffuse>0.7200000286102295 0.7799999713897705 0.8500000238418579 1.0</diffuse>
+          <specular>0.9 0.9 0.9 1</specular>
+        </material>
+      </visual>
+      <collision name="steel_ball">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+    <joint name="front_ball_joint" type="ball">
+      <parent>base_link</parent>
+      <child>front_ball</child>
+      <pose relative_to="front_ball">0 0 0 0 0 0</pose>
+    </joint>
+    <joint name="rear_ball_joint" type="ball">
+      <parent>base_link</parent>
+      <child>rear_ball</child>
+      <pose relative_to="rear_ball">0 0 0 0 0 0</pose>
+    </joint>
+    <joint name="left_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>left_wheel</child>
+      <pose relative_to="left_wheel">0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e16</lower>
+          <upper>1e16</upper>
+          <effort>0.2</effort>
+          <velocity>40</velocity>
+        </limit>
+      </axis>
+    </joint>
+    <joint name="right_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>right_wheel</child>
+      <pose relative_to="right_wheel">0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e16</lower>
+          <upper>1e16</upper>
+          <effort>0.2</effort>
+          <velocity>40</velocity>
+        </limit>
+      </axis>
+    </joint>
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <left_joint>left_wheel_joint</left_joint>
+      <right_joint>right_wheel_joint</right_joint>
+      <wheel_separation>0.10</wheel_separation>
+      <wheel_radius>0.025</wheel_radius>
+      <topic>/model/round_robot/cmd_vel</topic>
+      <odom_topic>/model/round_robot/odometry</odom_topic>
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_link</child_frame_id>
+      <odom_publish_frequency>50</odom_publish_frequency>
+    </plugin>
+  </model>
+</sdf>

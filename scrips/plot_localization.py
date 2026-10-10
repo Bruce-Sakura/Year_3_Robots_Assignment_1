@@ -34,6 +34,83 @@ def load_csv():
 def main():
     df, csv_path = load_csv()
 
+    # # Heading diagnostic
+    # gt_heading = np.degrees(df.theta_gt_rad.to_numpy())
+    # clean_heading = np.degrees(df.theta_clean_rad.to_numpy())
+    #
+    # heading_error = (
+    #                         (gt_heading - clean_heading + 180) % 360
+    #                 ) - 180
+    #
+    # clean_error = df.clean_error_m.to_numpy()
+    # noisy_error = df.position_error_m.to_numpy()
+    #
+    # noise_difference = np.hypot(
+    #     df.x_est_m - df.x_clean_m,
+    #     df.y_est_m - df.y_clean_m
+    # )
+    #
+    # print("Clean RMSE:", np.sqrt(np.mean(clean_error ** 2)), "m")
+    # print("Noisy RMSE:", np.sqrt(np.mean(noisy_error ** 2)), "m")
+    # print("Noisy vs Clean final:", noise_difference.iloc[-1], "m")
+    # print("Final Ground Truth heading:", gt_heading[-1], "deg")
+    # print("Final Clean heading:", clean_heading[-1], "deg")
+    # print("Final heading difference:", heading_error[-1], "deg")
+
+    # Find when forward motion begins
+    # travel = np.hypot(
+    #     df.x_clean_m - df.x_clean_m.iloc[0],
+    #     df.y_clean_m - df.y_clean_m.iloc[0]
+    # )
+    #
+    # indices = np.flatnonzero(travel > 0.01)
+    #
+    # def heading_difference(index):
+    #     gt = df.theta_gt_rad.iloc[index]
+    #     clean = df.theta_clean_rad.iloc[index]
+    #
+    #     return np.degrees(
+    #         np.arctan2(
+    #             np.sin(gt - clean),
+    #             np.cos(gt - clean)
+    #         )
+    #     )
+    #
+    # if len(indices) > 0:
+    #     start = indices[0]
+    #
+    #     print(
+    #         "Heading difference near DRIVE start:",
+    #         heading_difference(start),
+    #         "degrees"
+    #     )
+    #
+    # print(
+    #     "Heading difference at finish:",
+    #     heading_difference(-1),
+    #     "degrees"
+    # )
+
+    clean = df.theta_clean_rad.to_numpy()
+    truth = df.theta_gt_rad.to_numpy()
+
+    heading_error = np.degrees(
+        np.arctan2(
+            np.sin(truth - clean),
+            np.cos(truth - clean)
+        )
+    )
+
+    for angle in [0, 15, 30, 45]:
+        target = np.radians(angle)
+        index = np.argmin(np.abs(clean - target))
+
+        print(
+            f"Clean heading ≈ {angle}°: "
+            f"Ground Truth = {np.degrees(truth[index]):.4f}°, "
+            f"Error = {heading_error[index]:.4f}°"
+        )
+
     # ===== Trajectory Plot =====
     fig1, ax1 = plt.subplots(figsize=(8, 6))
 
@@ -58,7 +135,34 @@ def main():
     ax1.set_xlabel("X (m)")
     ax1.set_ylabel("Y (m)")
     ax1.set_title("Robot Localization Trajectory")
-    ax1.axis("equal")
+    # Equal scale without automatically changing axis limits
+    ax1.set_aspect("equal", adjustable="box")
+
+    # Use the same range on both axes, with aligned ticks
+    coordinates = df[
+        ["x_gt_m", "y_gt_m", "x_est_m", "y_est_m",
+         "x_clean_m", "y_clean_m"]
+    ].to_numpy()
+
+    step = 0.5
+    # lower = min(0.0, np.floor(np.nanmin(coordinates) / step) * step)
+    lower = 0.0
+    upper = np.ceil(np.nanmax(coordinates) / step) * step + step
+
+    ax1.set_xlim(lower, upper)
+    ax1.set_ylim(lower, upper)
+
+    ticks = np.arange(lower, upper + step / 2, step)
+    ax1.set_xticks(ticks)
+    ax1.set_yticks(ticks)
+
+    # Mark the coordinate origin
+    ax1.scatter(0, 0, color="black", s=25, zorder=5)
+    ax1.annotate(
+        "(0, 0)", xy=(0, 0), xytext=(8, 8),
+        textcoords="offset points"
+    )
+
     ax1.legend()
     ax1.grid(True)
 
@@ -96,6 +200,10 @@ def main():
     ax2.set_xlabel("Simulation Time (s)")
     ax2.set_ylabel("Error (m)")
     ax2.set_title("Localization Error Over Time")
+    # Start both axes at zero and remove horizontal padding
+    ax2.set_xlim(left=0)
+    ax2.set_ylim(bottom=0)
+    ax2.margins(x=0)
     ax2.legend()
     ax2.grid(True)
 

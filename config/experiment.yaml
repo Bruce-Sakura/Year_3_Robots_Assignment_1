@@ -5,3 +5,6 @@ odometry_noise:
   distance_std_m: 0.0002
   heading_std_rad: 0.001
   seed: 42
+#  distance_std_m: 0.02
+#  heading_std_rad: 0.01
+#  seed: 42

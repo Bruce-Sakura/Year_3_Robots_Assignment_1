@@ -3,3 +3,4 @@ robot_controller:
     left_wheel_radius: 0.025
     right_wheel_radius: 0.025
     wheel_separation: 0.10
+#    wheel_separation: 0.0881

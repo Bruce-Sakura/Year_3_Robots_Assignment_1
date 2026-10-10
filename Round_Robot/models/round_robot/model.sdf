@@ -2140,7 +2140,7 @@
         <geometry>
           <cylinder>
             <radius>0.025</radius>
-            <length>0.012</length>
+            <length>0.001</length>
           </cylinder>
         </geometry>
         <surface>
@@ -3249,7 +3249,7 @@
         <geometry>
           <cylinder>
             <radius>0.025</radius>
-            <length>0.012</length>
+            <length>0.001</length>
           </cylinder>
         </geometry>
         <surface>

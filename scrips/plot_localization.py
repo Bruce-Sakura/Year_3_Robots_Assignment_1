@@ -34,6 +34,83 @@ def load_csv():
 def main():
     df, csv_path = load_csv()
 
+    # # Heading diagnostic
+    # gt_heading = np.degrees(df.theta_gt_rad.to_numpy())
+    # clean_heading = np.degrees(df.theta_clean_rad.to_numpy())
+    #
+    # heading_error = (
+    #                         (gt_heading - clean_heading + 180) % 360
+    #                 ) - 180
+    #
+    # clean_error = df.clean_error_m.to_numpy()
+    # noisy_error = df.position_error_m.to_numpy()
+    #
+    # noise_difference = np.hypot(
+    #     df.x_est_m - df.x_clean_m,
+    #     df.y_est_m - df.y_clean_m
+    # )
+    #
+    # print("Clean RMSE:", np.sqrt(np.mean(clean_error ** 2)), "m")
+    # print("Noisy RMSE:", np.sqrt(np.mean(noisy_error ** 2)), "m")
+    # print("Noisy vs Clean final:", noise_difference.iloc[-1], "m")
+    # print("Final Ground Truth heading:", gt_heading[-1], "deg")
+    # print("Final Clean heading:", clean_heading[-1], "deg")
+    # print("Final heading difference:", heading_error[-1], "deg")
+
+    # Find when forward motion begins
+    # travel = np.hypot(
+    #     df.x_clean_m - df.x_clean_m.iloc[0],
+    #     df.y_clean_m - df.y_clean_m.iloc[0]
+    # )
+    #
+    # indices = np.flatnonzero(travel > 0.01)
+    #
+    # def heading_difference(index):
+    #     gt = df.theta_gt_rad.iloc[index]
+    #     clean = df.theta_clean_rad.iloc[index]
+    #
+    #     return np.degrees(
+    #         np.arctan2(
+    #             np.sin(gt - clean),
+    #             np.cos(gt - clean)
+    #         )
+    #     )
+    #
+    # if len(indices) > 0:
+    #     start = indices[0]
+    #
+    #     print(
+    #         "Heading difference near DRIVE start:",
+    #         heading_difference(start),
+    #         "degrees"
+    #     )
+    #
+    # print(
+    #     "Heading difference at finish:",
+    #     heading_difference(-1),
+    #     "degrees"
+    # )
+
+    clean = df.theta_clean_rad.to_numpy()
+    truth = df.theta_gt_rad.to_numpy()
+
+    heading_error = np.degrees(
+        np.arctan2(
+            np.sin(truth - clean),
+            np.cos(truth - clean)
+        )
+    )
+
+    for angle in [0, 15, 30, 45]:
+        target = np.radians(angle)
+        index = np.argmin(np.abs(clean - target))
+
+        print(
+            f"Clean heading ≈ {angle}°: "
+            f"Ground Truth = {np.degrees(truth[index]):.4f}°, "
+            f"Error = {heading_error[index]:.4f}°"
+        )
+
     # ===== Trajectory Plot =====
     fig1, ax1 = plt.subplots(figsize=(8, 6))
 

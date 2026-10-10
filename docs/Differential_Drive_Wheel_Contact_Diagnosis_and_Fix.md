@@ -8,7 +8,6 @@ Repository: [Year_3_Robots_Assignment_1](https://github.com/Bruce-Sakura/Year_3_
 
 The robot's wheel-based odometry reported a turn of approximately 45 degrees, while its Gazebo ground-truth orientation showed approximately 51 degrees. The robot subsequently drove along the incorrect heading, producing a substantial position error.
 
-The original experiment was recorded in `../results/old/localization_20261009_230014_130403.csv`. The heading difference was approximately constant during the following straight segment, indicating that the main systematic error accumulated during turning.
 
 ## 2. Model and Code Checks
 
@@ -137,7 +136,6 @@ The revised XML parsed successfully, and a content comparison confirmed that onl
 
 ## 5. Experimental Validation
 
-After replacing the model and restarting the simulation, the new experiment was recorded in `../results/old/localization_20261010_102534_404782.csv`.
 
 The plotting script reported:
 

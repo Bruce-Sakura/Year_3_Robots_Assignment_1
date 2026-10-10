@@ -256,6 +256,5 @@ Additional diagnostic checks should verify reference-frame origins and axes, tim
 ### Sources and reproducibility
 
 - **Course notes:** *Intelligent Robotics — Lecture 2: Sensing & Odometry*, slides 24–25, 29, and 31–33.
-- **Experiment log:** `../results/old/localization_20261009_230014_130403.csv`, run on 9 October 2026; **1,457 matched records**.
 - **Relevant project files:** `src/localization/odometry_uncertainty.py`, `src/localization/localization_metrics.py`, `src/controller/robot_auto_controller.py`, `config/robot.yaml`, `config/experiment.yaml`, and `Round_Robot/models/round_robot/model.sdf`.
 - **Figure 1:** Reconstructed from the four diagnostic checkpoints printed in the terminal; the table retains the reported numerical precision.

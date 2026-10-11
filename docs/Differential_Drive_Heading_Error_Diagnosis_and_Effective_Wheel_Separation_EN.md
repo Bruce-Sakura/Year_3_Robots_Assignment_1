@@ -178,3 +178,11 @@ python scrips/analyze_heading.py
 The helper uses the Python standard library, reads the earlier and later archived CSV files, and prints JSON containing RMSE, checkpoint headings, accumulated turns, inferred separations, and observed percentage reductions. It does not run Gazebo or modify any data or configuration.
 
 The equations are implemented in `src/navigation.py` and `src/localization/odometry_uncertainty.py`; timestamp matching is implemented in `src/localization/localization_metrics.py`. The source record for this diagnosis stays fixed at the archived earlier CSV above. Newer runs must not be substituted for the data used to discover this discrepancy.
+
+## Fixed source file identities
+
+These SHA-256 values identify the exact archived CSV bytes used for the calculations above. Moving a file changes its link path, but not its hash; a different dataset must not silently replace it.
+
+| Archived source | SHA-256 |
+|---|---|
+| [localization_20261009_230014_130403.csv](../results/old/localization_20261009_230014_130403.csv) | `802c4bfb8c5d5e77c07c76f04ba9c996b26e2dfdf1a4073a5b483d5d916c1228` |

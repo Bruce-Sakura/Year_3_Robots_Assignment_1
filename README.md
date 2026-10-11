@@ -137,6 +137,19 @@ The Gazebo topic names are `/model/round_robot/cmd_vel`, `/model/round_robot/odo
 
 ## Output and recorded results
 
+### Fixed dataset ownership
+
+| Document or calculation | Fixed CSV source | Experiment |
+|---|---|---|
+| Original heading-error diagnosis and 0.08815039 m effective separation | [Earlier archived run](results/old/localization_20261009_230014_130403.csv) | Single goal near (1, 1); 1,457 matched samples |
+| Collision-width comparison and 0.09905037 m effective separation | [Later archived run](results/old/localization_20261010_102534_404782.csv), compared with the earlier archived run above | Single goal near (1, 1); 729 matched samples in the later run |
+| Assignment results below and Report.docx | [Three-waypoint run](results/localization_20261010_105607_895741.csv) | (1, 2), (2, 1), (3, 3); 3,117 matched samples |
+
+The diagnosis articles and `scrips/analyze_heading.py` use the two named archived files, never the latest-file selector used by the plotting script. New trials must not replace those historical source records. The report's three-waypoint metrics are calculated separately.
+
+### Output files
+
+
 `results/odometry_*.csv` stores `/odom` poses. `results/localization_*.csv` stores timestamp-matched clean/noisy estimates, ground truth, and errors. Generate plots with:
 
 ```bash

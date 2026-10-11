@@ -150,3 +150,12 @@ python scrips/analyze_heading.py
 This standard-library helper prints the values used in both articles from the stored CSVs, including the observed reductions. It does not modify the model, generate new trials, or overwrite historical data.
 
 The evidence for this investigation remains the two archived CSV files in Section 4. Keep these source records fixed when reproducing or citing this diagnosis; a newer experiment is a separate record and must not replace them.
+
+## Fixed source file identities
+
+These SHA-256 values identify the exact archived CSV bytes used for the calculations above. Moving a file changes its link path, but not its hash; a different dataset must not silently replace it.
+
+| Archived source | SHA-256 |
+|---|---|
+| [localization_20261009_230014_130403.csv](../results/old/localization_20261009_230014_130403.csv) | `802c4bfb8c5d5e77c07c76f04ba9c996b26e2dfdf1a4073a5b483d5d916c1228` |
+| [localization_20261010_102534_404782.csv](../results/old/localization_20261010_102534_404782.csv) | `07d8916a0ee3ba8cd77bb8d2dd01de7c0475b34747e9c001249210d9fd870208` |

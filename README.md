@@ -1,5 +1,15 @@
 # Robotics Assignment 1
 
+## Read the assignment articles
+
+1. [Finding the heading error and deriving the effective wheel separation](docs/Differential_Drive_Heading_Error_Diagnosis_and_Effective_Wheel_Separation_EN.md) — CSV evidence, turn-phase diagnosis, reverse calculation to 0.08815039 m, and endpoint-error consistency.
+2. [Correcting the wheel collision geometry and comparing recorded results](docs/Differential_Drive_Wheel_Contact_Diagnosis_and_Fix.md) — the 12 mm to 1 mm collision-width change, exact SDF edits, and before/after measurements.
+3. [Wheel-angle waypoint navigation](docs/week2_turn_then_drive.md) — the implemented planner, feedback, and motion equations.
+4. [Wheel odometry uncertainty and localization evaluation](docs/Uncertainty.md) — noise injection, independent truth, timestamp matching, and error metrics.
+
+Recalculate the diagnostic evidence with `python scrips/analyze_heading.py`. The first two articles discuss archived single-goal experiments; the assignment results below describe the current three-waypoint run.
+
+
 ## Objective
 
 This assignment studies two-dimensional localization of a differential-drive robot using noisy wheel odometry. The robot executes three world-frame waypoints in Gazebo: `(1, 2)`, `(2, 1)`, and `(3, 3)` metres. Clean and noisy wheel-based estimates are compared with an independently published simulator pose to measure localization error.
@@ -135,7 +145,7 @@ python scrips/plot_localization.py
 
 The script selects the most recently modified localization CSV directly under `results`, accepts no CSV argument, and writes `_trajectory.png` and `_error.png` beside the selected CSV.
 
-The following values were recalculated from `results/localization_20261010_105607_895741.csv`, the dataset discussed in `Report.docx`:
+The following values were recalculated from [results/localization_20261010_105607_895741.csv](results/localization_20261010_105607_895741.csv), the dataset discussed in `Report.docx`:
 
 | Metric | Recorded value |
 |---|---:|

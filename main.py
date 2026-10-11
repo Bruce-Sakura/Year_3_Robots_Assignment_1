@@ -45,12 +45,14 @@ WAYPOINTS = [
 
 
 def main():
+    """Execute world-frame waypoints and release ROS resources on every exit."""
     rclpy.init()
     robot = None
 
     try:
         robot = RobotAutoController()
 
+        # Each call plans from the latest /odom pose and blocks until completion.
         for index, (x, y) in enumerate(WAYPOINTS, start=1):
 
             robot.get_logger().info(
@@ -81,6 +83,7 @@ def main():
         pass
 
     finally:
+        # Stop before closing logs and destroying the node, including on timeout.
         if robot is not None:
             robot.stop()
             robot.close_log()

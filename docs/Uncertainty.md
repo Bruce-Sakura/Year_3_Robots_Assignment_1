@@ -1,6 +1,6 @@
 # Week 2: Odometry Uncertainty, Ground Truth, Error Analysis, and RMSE
 
-This package was prepared based on the structure of the `main` branch of the public GitHub repository `Bruce-Sakura/Year_3_Robots_Assignment_1` as of 2026-10-09. **It has not automatically modified the GitHub repository and has not been tested in the user's actual Gazebo environment.**
+This document describes the implementation in this checkout. It separates wheel-based estimation, motion execution, and independent simulator-truth evaluation. Stored results are experiment evidence; no new Gazebo run was performed for this documentation update.
 
 ## Implementation Overview
 
@@ -9,70 +9,44 @@ This package was prepared based on the structure of the `main` branch of the pub
 3. Maintain two independent dead-reckoning trajectories: **clean** and **noisy**. These use `(Δs, Δθ)` and `(Δs + e_s, Δθ + e_θ)`, respectively, to update `(x, y, θ)` using the midpoint method introduced in the lecture slides.
 4. Model noise as `e_s ~ N(0, distance_std_m²)` and `e_θ ~ N(0, heading_std_rad²)`. Sample noise once for each incoming wheel-joint state message when the wheels are moving. The default wheel-state publication rate is 50 Hz.
 5. Add an **independent model ground-truth publisher** in Gazebo (`/model/round_robot/ground_truth`), bridged to ROS 2 as `/ground_truth`. Ground truth is used **only for evaluation**, not for `NoisyWheelOdometry` calculations, planning, or execution.
-6. Align and interpolate measurements using simulation message timestamps, record `position_error_m` for each frame, and calculate MSE, RMSE, final localization error, and the true final-position error relative to the target `(1, 1)`. Generate trajectory and error-versus-time plots.
+6. Align and interpolate measurements using simulation message timestamps, record `position_error_m` for each frame, and calculate MSE, RMSE, final localization error, and the true final-position error relative to the latest requested waypoint (currently the last waypoint is `(3, 3)`). Generate trajectory and error-versus-time plots.
 7. Fix the duplicated DiffDrive plugin declarations in the repository's `model.sdf` (previously two declarations; only one should remain).
 
-**Verified:** Python syntax; seven mathematical unit tests; first-time and repeated application of the installation script to a mock repository; shell syntax; SDF XML parsing; and CSV, MSE, RMSE, and Matplotlib plot generation using 481 simulated samples.
+## Running the current implementation
 
-## Installation and Usage
+The uncertainty modules are already integrated. No external installation ZIP or `apply_to_repo.py` is required, and this checkout does not contain a `tests` directory.
 
-Download `Robot_Week2_Uncertainty_Evaluation.zip` to your computer and extract it, for example, to `~/Downloads/Robot_Week2_Uncertainty_Evaluation/`.
+Use Linux with ROS 2 Jazzy, Gazebo Harmonic, `ros_gz_bridge`, and a Python environment that can import `rclpy`, `PyYAML`, `numpy`, `pandas`, and `matplotlib`.
 
-Before applying the changes, inspect your local modifications to avoid unintentionally overwriting existing work:
-
-```bash
-cd ~/Desktop/Robots
-git status -sb
-# Consider backing up or committing your existing work first.
-```
-
-Run the installation script:
-
-```bash
-python ~/Downloads/Robot_Week2_Uncertainty_Evaluation/apply_to_repo.py ~/Desktop/Robots
-```
-
-The script automatically creates a timestamped `Robots_uncertainty_backup_.../` backup directory alongside the project directory. It does not create Git commits or push changes.
-
-Run the tests from the project root:
-
-```bash
-cd ~/Desktop/Robots
-python -m unittest discover -s tests -v
-```
-
-Restart Gazebo and the ROS 2 bridge:
+From the repository root, start the simulation and bridges:
 
 ```bash
 bash start_sim.sh
 ```
 
-In another terminal where the ROS 2 environment has been sourced, verify that ground-truth poses and wheel-joint feedback are being published:
+In a second ROS-enabled terminal:
 
 ```bash
+source /opt/ros/jazzy/setup.bash
 ros2 topic echo /ground_truth --once
 ros2 topic echo /joint_states --once
 ros2 topic echo /odom --once
-```
-
-Then run the application from the repository root:
-
-```bash
 python main.py
 ```
 
-When execution finishes, the terminal reports the total sample count, `MSE`, `RMSE`, `final-localization-error`, and `final true goal error`.
+The application executes `(1, 2)`, `(2, 1)`, and `(3, 3)` metres sequentially. After execution it reports matched sample count, MSE, RMSE, clean RMSE, heading RMSE, final localization error, and true final goal error when available. With no matched truth samples, it reports the missing data rather than an RMSE.
 
-New experiment data is saved to `results/localization_YYYYMMDD_HHMMSS_microseconds.csv`. The existing `results/odometry_...csv` files continue to be generated as before.
+New evaluation data is saved as `results/localization_YYYYMMDD_HHMMSS_microseconds.csv`. `/odom` poses are separately saved in `results/odometry_*.csv`. Historical runs remain in `results/old`.
 
-To generate plots, ensure that `numpy`, `pandas`, and `matplotlib` are installed in your Conda environment:
+Generate the two plots with:
 
 ```bash
-CSV=$(ls -t results/localization_*.csv | head -1)
-python scripts/plot_localization.py "$CSV"
+python scrips/plot_localization.py
 ```
 
-This generates `..._trajectory.png` and `..._error.png`.
+The script selects the most recently modified localization CSV in `results` and saves `_trajectory.png` and `_error.png` beside it. It currently takes no CSV argument.
+
+For an existing model with missing topics, inspect `scrips/fix_diffdrive.py` and `scrips/fix_ground_truth.py` before applying them. These helpers edit simulation configuration and create backups. Restart Gazebo and the bridge after changing SDF or bridge settings.
 
 ## Error Metrics and Loss Definitions
 

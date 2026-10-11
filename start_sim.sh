@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
-# 进入启动脚本所在目录
+# Change to the directory containing this startup script.
 cd "$(dirname "$(realpath "$0")")"
 
-# 初始化 ROS 2 Jazzy
+# Load the ROS 2 Jazzy environment.
 source /opt/ros/jazzy/setup.bash
 
-# Gazebo 模型目录
+# Locate the Gazebo model directory.
 ROBOT_DIR="$PWD/Round_Robot"
 
-# Gazebo 模型搜索路径
+# Prepend project models while preserving existing Gazebo resource paths.
 export GZ_SIM_RESOURCE_PATH="$ROBOT_DIR/models${GZ_SIM_RESOURCE_PATH:+:$GZ_SIM_RESOURCE_PATH}"
 
 echo "Starting Gazebo Harmonic..."

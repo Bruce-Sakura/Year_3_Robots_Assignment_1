@@ -1,5 +1,7 @@
 # Diagnosing Heading Error in a Differential-Drive Robot
 
+> Checkout note: this document preserves a historical single-goal diagnosis. The current application executes three waypoints, keeps wheel separation at 0.10 m, and uses 0.001 m wheel collision width. The 0.0881 m candidate is commented out in configuration. Historical numerical observations below are not a new validation run. Current usage is documented in the root README and `docs/Uncertainty.md`.
+
 **Experimental Investigation and Effective Wheel Separation Estimation**
 
 **Project:** Round Robot (ROS 2 Jazzy + Gazebo Harmonic)  

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Launch Gazebo only; use the root start_sim.sh for ROS topic bridges."""
 from pathlib import Path
 import os, subprocess, sys
 p = Path(__file__).resolve().parent

@@ -1,3 +1,8 @@
+"""Generate robot visual assets inside Blender, overwriting existing outputs.
+
+Collision geometry and simulation plugins remain in the separately maintained
+SDF model; generating meshes does not update that simulation configuration.
+"""
 import bpy, math, json, struct
 from pathlib import Path
 from mathutils import Vector
@@ -88,7 +93,7 @@ for s,label in [(1,'front'),(-1,'rear')]:
  bpy.ops.mesh.primitive_uv_sphere_add(segments=48,ring_count=24,radius=.0053,location=(x,0,-.020)); cut(cup,bpy.context.object)
  bpy.ops.mesh.primitive_uv_sphere_add(segments=64,ring_count=32,radius=.005,location=(x,0,-.020)); ball=finish(bpy.context.object,label+'_steel_ball',silver,label+'_ball')
  for p in ball.data.polygons:p.use_smooth=True
-# Both frames are literally the same point, at disk centre and axle midpoint.
+# Frames share x/y but differ in z: chassis centre -0.0125 m, axle midpoint 0 m.
 for name in ['model_center','base_link']:
  o=bpy.data.objects.new(name,None); scene.collection.objects.link(o); o.empty_display_type='ARROWS'; o.empty_display_size=.025; o.location=(0,0,-.0125 if name=='model_center' else 0)
 origins={'base_link':Vector((0,0,0)),'left_wheel':Vector((0,.05,0)),'right_wheel':Vector((0,-.05,0)),'front_ball':Vector((.036,0,-.020)),'rear_ball':Vector((-.036,0,-.020))}

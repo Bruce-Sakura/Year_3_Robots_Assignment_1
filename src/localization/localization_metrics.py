@@ -30,6 +30,7 @@ class _Truth:
 
 
 class LocalizationMetrics:
+    """Match wheel estimates to bracketing truth poses without feeding control."""
     def __init__(self, results_dir: Path, max_interpolation_gap_s: float = 0.10):
         results_dir.mkdir(parents=True, exist_ok=True)
         path = results_dir / f"localization_{datetime.now():%Y%m%d_%H%M%S_%f}.csv"
@@ -76,6 +77,7 @@ class LocalizationMetrics:
         self._match()
 
     def _match(self) -> None:
+        # Drop samples older than the bracket and wait for future truth when needed.
         before, after = self._truth_before, self._truth_after
         if before is None or after is None:
             return
@@ -94,6 +96,7 @@ class LocalizationMetrics:
                 continue  # Don't interpolate across a large simulation gap.
             fraction = (sample.timestamp - before.timestamp) / duration
             prev, curr = before.pose, after.pose
+            # Interpolate heading along the shortest arc across the +/-pi boundary.
             gt = Pose2D(
                 prev.x + fraction * (curr.x - prev.x),
                 prev.y + fraction * (curr.y - prev.y),
@@ -120,6 +123,7 @@ class LocalizationMetrics:
                 self._file.flush()
 
     def summary(self) -> dict:
+        """Report localization error separately from true final goal error."""
         if self.count == 0:
             return {"samples": 0, "csv": str(self.path)}
         mse = self.sum_squared_error / self.count

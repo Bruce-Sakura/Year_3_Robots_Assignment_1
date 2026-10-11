@@ -1,5 +1,7 @@
 # Differential-Drive Heading Error: Diagnosis and Collision-Geometry Fix
 
+> Checkout note: this document preserves a historical single-goal diagnosis. The current application executes three waypoints, keeps wheel separation at 0.10 m, and uses 0.001 m wheel collision width. The 0.0881 m candidate is commented out in configuration. Historical numerical observations below are not a new validation run. Current usage is documented in the root README and `docs/Uncertainty.md`.
+
 Date: 10 October 2026  
 Environment: ROS 2 Jazzy and Gazebo Harmonic  
 Repository: [Year_3_Robots_Assignment_1](https://github.com/Bruce-Sakura/Year_3_Robots_Assignment_1)

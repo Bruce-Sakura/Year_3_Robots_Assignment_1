@@ -1,14 +1,16 @@
-圆形机器人胎纹与架空主板版
-树莓派6为概念占位板：未找到官方机械尺寸，暂用Pi5的85×56mm及58×49mm孔间距；接口、芯片为简化示意。
-四根28mm立柱从底盘顶面支撑主板底面；架空主板底面z=0.018m，距马达顶部12mm。
-轮胎48组双排立体胎纹，最大滚动半径约25mm，仿真碰撞仍用25mm圆柱。
-电机接线经驱动板，GPIO和电源线为视觉示意，未含电池、电气电路或热设计。
-底盘名义直径100 mm，厚5 mm，两侧轮槽留2 mm间隙。
-轮径50 mm，轮距100 mm，轮宽12 mm。两侧竖直轴支架带4.6 mm轴孔；马达为尺寸示意模型，不对应指定实物型号。
-base_link / 轮轴中点=(0,0,0)，model_center / 底盘几何中心=(0,0,-0.0125) m。
-两中心水平位置重合，高度相差12.5 mm，这是轮径50 mm、底盘下表面离地10 mm、底盘厚5 mm的必然结果。
-轮子最低点z=-0.025，底盘下表面z=-0.015，净离地10 mm。前后钢球直径10 mm，球心(±0.036,0,-0.020)，最低点同为-0.025。
-打开round_robot.blend。部件独立、米制、Rotation/Scale已应用。
-运行python3 main.py启动Gazebo；话题仍为/model/round_robot/cmd_vel和/model/round_robot/odometry。
-差速参数r=0.025,L=0.10：v=0.0125*(wR+wL)，yaw_rate=0.25*(wR-wL)。
-Gazebo质量/惯量为估算值，底盘采用简化碰撞体，钢球为球关节；马达和支架为视觉部件。已检查几何/XML/ZIP，未实测动力学。
+Round robot model with tread blocks and an elevated concept board
+
+The Raspberry Pi 6 board is a conceptual placeholder, using an 85 x 56 mm Pi 5 envelope and 58 x 49 mm mounting-hole spacing. Ports and chips are simplified visual representations; the model does not establish official Pi 6 mechanical dimensions.
+Four 28 mm standoffs support the board. Its underside is at z = 0.018 m, 12 mm above the motor tops.
+The tyres have 48 pairs of raised tread blocks, with an effective rolling radius of approximately 25 mm. The simulation uses cylindrical wheel collision shapes of radius 25 mm.
+The visual tyre width is 12 mm. The checked-in SDF collision width was reduced to 1 mm during contact diagnosis; visual dimensions and collision dimensions are distinct.
+Motor wiring passes through the driver board. GPIO and power wires are visual illustrations; no battery, electrical circuit, or thermal design is included.
+The chassis has a nominal diameter of 100 mm and thickness of 5 mm, with 2 mm wheel-slot clearance on each side.
+Wheel diameter is 50 mm and centre-to-centre separation is 100 mm. Vertical axle brackets have 4.6 mm holes. Motors illustrate dimensions and do not represent a specified commercial model.
+The axle midpoint/base_link origin is (0, 0, 0). The chassis geometric centre/model_center is (0, 0, -0.0125) m. Their horizontal positions coincide, but their heights differ by 12.5 mm.
+The wheel bottoms are at z = -0.025 m; the chassis underside is at z = -0.015 m, giving 10 mm clearance. Front and rear steel balls have diameter 10 mm and centres at (+/-0.036, 0, -0.020) m, with the same lowest point as the wheels.
+Open round_robot.blend to inspect independent parts in metre units with applied rotation and scale. build_robot.py runs inside Blender and overwrites generated meshes, parts.json, the Blender scene, and previews; it does not rebuild the SDF or preserve manual mesh edits.
+From the repository root, run bash start_sim.sh to launch Gazebo and ROS bridges, then python main.py in a ROS-enabled terminal to execute the three waypoints. Running python3 Round_Robot/main.py launches Gazebo only, without ROS bridges or navigation.
+Gazebo drive topics are /model/round_robot/cmd_vel and /model/round_robot/odometry. ROS uses /cmd_vel, /odom, /joint_states, and /ground_truth; ground truth is for evaluation only.
+For r = 0.025 m and b = 0.10 m: v = 0.0125 * (wR + wL) and yaw_rate = 0.25 * (wR - wL), with wheel speeds in rad/s.
+Masses and inertias are estimates. The chassis uses simplified collision geometry, caster balls use ball joints, and motors and brackets are visual parts. Stored experiment records are available, but this documentation update does not constitute a new dynamics validation.

@@ -30,15 +30,18 @@ from src.navigation import (
 
 
 def _yaw(q):
+    """Extract planar heading from a ROS quaternion, in radians."""
     return math.atan2(2 * (q.w * q.z + q.x * q.y),
                       1 - 2 * (q.y * q.y + q.z * q.z))
 
 
 def _stamp(stamp):
+    """Convert the message simulation timestamp to seconds for matching."""
     return stamp.sec + stamp.nanosec * 1e-9
 
 
 class RobotAutoController(RobotController):
+    """Execute encoder-based motion segments and log independent estimates."""
     MAX_LINEAR_SPEED = 0.12
     MIN_LINEAR_SPEED = 0.01
     LINEAR_DECELERATION = 0.15
@@ -103,12 +106,14 @@ class RobotAutoController(RobotController):
         self.timer = self.create_timer(0.01, self.control_step)
 
     def update_odometry(self, msg):
+        # Odometry supplies each waypoint starting pose, not estimator corrections.
         p = msg.pose.pose.position
         self.pose = (p.x, p.y, _yaw(msg.pose.pose.orientation))
         self.last_odom_time = time.monotonic()
         self.position_recorder.record(msg)
 
     def update_joints(self, msg):
+        # Accept scoped Gazebo names while identifying only the two drive wheels.
         names = [name.split("::")[-1].split("/")[-1] for name in msg.name]
         try:
             left_index = names.index("left_wheel_joint")
@@ -121,6 +126,7 @@ class RobotAutoController(RobotController):
             noisy_pose, clean_pose = self.noisy_odometry.update(*self.wheel_angles)
             self.metrics.add_estimate(_stamp(msg.header.stamp), noisy_pose, clean_pose)
         except (ValueError, IndexError):
+            # Ignore malformed samples; stale feedback will stop motion.
             pass
 
     def update_ground_truth(self, msg):
@@ -173,11 +179,13 @@ class RobotAutoController(RobotController):
 
     @staticmethod
     def _profile(remaining, minimum, maximum, deceleration):
+        # v^2 = 2*a*s gives braking speed; the floor avoids stalling before crossing.
         return max(minimum, min(maximum, math.sqrt(2.0 * deceleration * max(0.0, remaining))))
 
     def control_step(self):
         if self.target is None or self.arrived:
             return
+        # Wall-clock freshness catches stalled topics even if simulation time stops.
         if not self._fresh_feedback():
             self._send_velocity()
             now = time.monotonic()
@@ -189,6 +197,7 @@ class RobotAutoController(RobotController):
                 self.last_feedback_warning = now
             return
 
+        # Plan once per waypoint; subsequent callbacks execute fixed wheel targets.
         if self.plan is None:
             self.plan = plan_turn_then_drive(
                 *self.pose, self.target[0], self.target[1],
@@ -202,6 +211,7 @@ class RobotAutoController(RobotController):
             self._next_segment()
             return
 
+        # Stop between segments so residual wheel motion can settle.
         if self.phase == "SETTLING":
             self._send_velocity()
             if time.monotonic() >= self.settle_until:
@@ -214,6 +224,7 @@ class RobotAutoController(RobotController):
         left_delta = self.wheel_angles[0] - self.segment_start[0]
         right_delta = self.wheel_angles[1] - self.segment_start[1]
         segment = self.segment
+        # Both wheels must cross their signed targets; this is not a pose tolerance.
         if (wheel_target_reached(left_delta, segment.left_rotation)
                 and wheel_target_reached(right_delta, segment.right_rotation)):
             self._send_velocity()
@@ -258,6 +269,7 @@ class RobotAutoController(RobotController):
             self.last_motion_log = now
 
     def go_to(self, x, y, theta=None, timeout=60.0):
+        """Run one waypoint while servicing ROS callbacks; always stop on exit."""
         if self.target is not None:
             raise RuntimeError("Another go_to command is already active")
         self.target = (float(x), float(y), None if theta is None else float(theta))
@@ -285,6 +297,7 @@ class RobotAutoController(RobotController):
         return self.arrived
 
     def close_log(self):
+        """Close both logs and report only timestamp-matched evaluation samples."""
         self.position_recorder.close()
         stats = self.metrics.close()
         if stats["samples"] == 0:

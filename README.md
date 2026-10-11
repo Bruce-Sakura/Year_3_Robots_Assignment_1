@@ -1,5 +1,52 @@
 # Maze Robot — ROS 2 & Gazebo Simulation
 
+## Current checkout guide
+
+The implemented application is a differential-drive waypoint experiment with wheel-based localization evaluation. The broader mapping, perception, and maze-navigation topics below describe project aims; this checkout does not implement SLAM or obstacle avoidance.
+
+`main.py` executes `(1, 2)`, `(2, 1)`, and `(3, 3)` metres in order, with a 90-second timeout for each waypoint. Each call plans a turn followed by straight travel from the latest `/odom` pose. Wheel joint feedback determines segment completion. No final heading is requested by the current entry point.
+
+### Start the experiment
+
+Use a Linux environment with ROS 2 Jazzy, Gazebo Harmonic, `ros_gz_bridge`, and the ROS message packages. Python dependencies used by this checkout are `PyYAML`, `numpy`, `pandas`, and `matplotlib`; the Python interpreter must also be able to import the installed `rclpy` packages.
+
+From the repository root, in the first terminal:
+
+```bash
+bash start_sim.sh
+```
+
+In a second terminal using the ROS-enabled Python environment:
+
+```bash
+source /opt/ros/jazzy/setup.bash
+ros2 topic echo /odom --once
+ros2 topic echo /joint_states --once
+ros2 topic echo /ground_truth --once
+python main.py
+python scrips/plot_localization.py
+```
+
+The plotting script automatically selects the most recently modified `results/localization_*.csv`; it does not accept a CSV path argument. The directory is intentionally named `scrips` in this repository. `Round_Robot/main.py` launches Gazebo alone and does not start the bridges.
+
+### Configuration and output
+
+- `config/robot.yaml`: wheel radii of 0.025 m and centre-to-centre separation of 0.10 m.
+- `config/experiment.yaml`: distance noise of 0.0002 m and heading noise of 0.001 rad per moving wheel sample, with random seed 42.
+- `Round_Robot/models/round_robot/model.sdf`: 50 Hz wheel feedback and ground-truth publication. Current wheel collision width is 0.001 m, while the visual tyre width is 0.012 m.
+- `src/controller/robot_auto_controller.py`: nominal 100 Hz control callbacks, one-second feedback freshness limit, and settling between motion segments.
+- `results/odometry_*.csv`: poses supplied by `/odom`.
+- `results/localization_*.csv`: timestamp-matched clean/noisy wheel estimates, independent ground truth, and error values. Plot outputs are saved beside the selected CSV; older runs are in `results/old`.
+
+Ground truth is used only by evaluation. The wheel estimator starts at the known spawn pose `(0, 0, 0)` and receives no ground-truth corrections. Navigation uses `/odom` and wheel feedback separately. Changing the spawn pose requires reviewing the estimator's initial pose.
+
+### Document map and evidence
+
+See `docs/week2_turn_then_drive.md` for motion equations, `docs/Uncertainty.md` for estimation and metrics, and `Round_Robot/README.txt` for visual and collision geometry. The two heading/contact diagnosis documents preserve historical single-goal experiments; their numerical findings are not measurements of a new run. `Report.docx` is already written in English and describes the stored three-waypoint experiment.
+
+The detailed reference below retains project background and earlier examples. Use this checkout guide for the current entry point and commands. This documentation update does not establish a fresh ROS/Gazebo runtime acceptance result.
+
+
 A differential-drive mobile robot simulation project developed using **ROS 2 Jazzy**, **Gazebo Harmonic**, **Python**, and **Blender**.
 
 The project provides a modular framework for robot motion control, odometry, localization, sensor integration, and autonomous maze navigation.

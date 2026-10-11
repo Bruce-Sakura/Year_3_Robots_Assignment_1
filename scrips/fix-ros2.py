@@ -1,3 +1,8 @@
+"""Expose the Linux ROS 2 Jazzy Python packages to the active environment.
+
+Running this helper writes a .pth file into that environment; it does not
+install ROS or make its Linux libraries usable on Windows.
+"""
 import site
 from pathlib import Path
 

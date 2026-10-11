@@ -4,6 +4,10 @@ This is a **turn, then drive straight** demonstration for the current
 `Round_Robot` Gazebo model. It is not SLAM, obstacle avoidance, or a
 localization estimator.
 
+## Current application
+
+The root `main.py` runs `(1, 2)`, `(2, 1)`, and `(3, 3)` sequentially, with a 90-second timeout per waypoint. The `(1, 1)` calculation below is an illustrative single-goal example, not the current entry point. Each waypoint is planned from the latest `/odom` pose; wheel feedback executes the plan. Localization estimates and simulator truth are logged independently for evaluation.
+
 ## Physics and reference frames
 
 The model uses `rL=rR=0.025 m` and wheel separation `b=0.10 m`, stored in
@@ -46,7 +50,7 @@ rad each (~9 turns).
    `ros2 topic echo /joint_states --once`.
 3. In a ROS-enabled Python environment, run `python main.py`.
 4. Inspect `results/odometry_*.csv` and the controller's logs for planned and
-   measured wheel motion. `go_to(1,1)` deliberately does **not** adjust the final
+   measured wheel motion. The current `go_to(x, y)` calls do **not** adjust the final
    robot heading after the straight segment.
 
 If `/joint_states` is missing, verify the JointStatePublisher plugin in

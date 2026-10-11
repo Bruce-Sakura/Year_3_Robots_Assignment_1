@@ -14,6 +14,7 @@ CSV_FILENAME = "localization_*.csv"
 
 
 def load_csv():
+    """Select the most recently modified localization CSV in results only."""
     files = list(RESULTS_DIR.glob(CSV_FILENAME))
 
     if not files:
@@ -32,6 +33,7 @@ def load_csv():
 
 
 def main():
+    """Plot the recorded estimates and truth; do not recompute robot motion."""
     df, csv_path = load_csv()
 
     # # Heading diagnostic

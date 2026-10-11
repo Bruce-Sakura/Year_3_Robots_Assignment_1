@@ -31,6 +31,7 @@ def wrap_angle(angle: float) -> float:
 
 
 def integrate_odometry(pose: Pose2D, delta_s: float, delta_theta: float) -> Pose2D:
+    # Midpoint heading approximates the curved path over one wheel sample.
     mid = pose.theta + delta_theta / 2.0
     return Pose2D(
         pose.x + delta_s * math.cos(mid),

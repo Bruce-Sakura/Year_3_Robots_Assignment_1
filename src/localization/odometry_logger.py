@@ -7,6 +7,7 @@ from pathlib import Path
 
 
 class OdometryLogger:
+    """Record /odom poses, distinct from the wheel-estimate evaluation CSV."""
 
     def __init__(self, logger):
         self.logger = logger

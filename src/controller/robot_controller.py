@@ -7,6 +7,7 @@ from geometry_msgs.msg import Twist
 
 
 class RobotController(Node):
+    """Publish body velocity commands; timed motions have no pose feedback."""
     def __init__(self):
         super().__init__("maze_robot_controller")
 
@@ -20,7 +21,7 @@ class RobotController(Node):
         angular: float = 0.0,
         duration: float = 1.0,
     ):
-        """move as the speed for a well"""
+        """Publish linear (m/s) and angular (rad/s) speed for a wall-clock duration."""
 
         msg = Twist()
         msg.linear.x = float(linear)
@@ -48,6 +49,7 @@ class RobotController(Node):
 
     def stop(self):
         msg = Twist()
+        # Repeat zero velocity to improve delivery before shutdown.
         for _ in range(3):
             self.publisher.publish(msg)
             time.sleep(0.1)

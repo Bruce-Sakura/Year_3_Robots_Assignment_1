@@ -49,6 +49,7 @@ def wheel_rotations_from_motion(
 ) -> tuple[float, float]:
     """Inverse of PPT Δs=(ΔsR+ΔsL)/2, Δθ=(ΔsR-ΔsL)/b."""
     _check_geometry(left_radius, right_radius, separation)
+    # An in-place turn has opposite signed wheel travel; straight travel is shared.
     left_distance = distance - separation * heading_change / 2.0
     right_distance = distance + separation * heading_change / 2.0
     return left_distance / left_radius, right_distance / right_radius
@@ -154,6 +155,7 @@ class WheelAngleTracker:
     def update(self, left: float, right: float) -> tuple[float, float]:
         if not math.isfinite(left) or not math.isfinite(right):
             raise ValueError("Wheel angles must be finite")
+        # The first sample establishes a baseline, not a displacement from zero.
         if self._previous is not None:
             self.left += normalize_angle(left - self._previous[0])
             self.right += normalize_angle(right - self._previous[1])

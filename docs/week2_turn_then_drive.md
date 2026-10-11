@@ -1,66 +1,61 @@
-# Week 2 differential-drive wheel-angle navigation
+# Wheel-angle waypoint navigation
 
-This is a **turn, then drive straight** demonstration for the current
-`Round_Robot` Gazebo model. It is not SLAM, obstacle avoidance, or a
-localization estimator.
+## Implemented task
 
-## Current application
+The root `main.py` executes `(1, 2)`, `(2, 1)`, and `(3, 3)` metres in sequence. Each waypoint has a 90-second timeout. `src/navigation.py` plans wheel displacements; `src/controller/robot_auto_controller.py` executes them using measured joints. `/odom` provides the starting pose for each plan.
 
-The root `main.py` runs `(1, 2)`, `(2, 1)`, and `(3, 3)` sequentially, with a 90-second timeout per waypoint. The `(1, 1)` calculation below is an illustrative single-goal example, not the current entry point. Each waypoint is planned from the latest `/odom` pose; wheel feedback executes the plan. Localization estimates and simulator truth are logged independently for evaluation.
+## Differential-drive equations
 
-## Physics and reference frames
+The current radii are `rL = rR = 0.025 m`, and wheel separation is `b = 0.10 m`. These values agree between `config/robot.yaml` and the Gazebo DiffDrive plugin.
 
-The model uses `rL=rR=0.025 m` and wheel separation `b=0.10 m`, stored in
-`config/robot.yaml`. Robot odometry is in `/odom`; measured Gazebo wheel joint
-positions are in `/joint_states`. Both feeds must work before navigation starts.
+For wheel increments `dphiL` and `dphiR`:
 
-The equations follow the Week 2 lecture (wheel distances -> body motion):
+```text
+dl = rL * dphiL
+dr = rR * dphiR
+ds = (dr + dl) / 2
+dtheta = (dr - dl) / b
+```
 
-- `Δs = (ΔsL + ΔsR)/2`
-- `Δθ = (ΔsR - ΔsL)/b`
+The inverse equations give the wheel targets for a desired body displacement:
 
-Solving them for the wheel rotations gives:
+```text
+dphiL = (ds - b*dtheta/2) / rL
+dphiR = (ds + b*dtheta/2) / rR
+```
 
-- `ΔφL = (Δs - b·Δθ/2) / rL`
-- `ΔφR = (Δs + b·Δθ/2) / rR`
+## Planning and execution
 
-The navigation plan is created **once** using the initial odometry pose:
+For a starting pose `(x, y, theta)` and target `(target_x, target_y)`:
 
-1. `heading = atan2(goal_y - y, goal_x - x)`;
-   `turn = wrap(heading - current_heading)`.
-2. Turn in place: `Δs=0`, use `turn` to compute the signed wheel rotations.
-3. Drive straight: `Δs=hypot(goal_x-x,goal_y-y)` and `Δθ=0`.
-4. Optionally turn to a final heading *only* if `go_to(x, y, theta)` supplies one.
+1. Compute the desired heading with `atan2(target_y-y, target_x-x)` and wrap its difference from the current heading to `[-pi, pi]`.
+2. Plan an in-place turn with zero centre displacement.
+3. Plan straight travel of `hypot(target_x-x, target_y-y)` with zero heading change.
+4. Add a final in-place turn only when `go_to` receives a final heading.
 
-The robot actually drives via `Twist` and Gazebo's existing DiffDrive plugin.
-Each segment ends when **both measured wheel joint rotations** reach or pass
-those computed targets. There is no arbitrary 3 cm target-position tolerance.
-Small speed limits and braking slow the wheels near their planned rotations.
-This is **not** ideal position control: wheel slip, control period and braking
-still produce real position error / wheel-angle overshoot.
+The plan is fixed for the waypoint. Each segment starts from the current accumulated wheel angles and finishes when both wheels reach or pass their signed targets. This stopping rule checks wheel motion rather than distance from the target pose.
 
-For `(0,0,0) -> (1,1)` the first turn is 45° with planned wheel rotations
-`(-π/2, +π/2)` rad. Forward wheel rotations are `sqrt(2)/0.025 ≈ 56.5685`
-rad each (~9 turns).
+`WheelAngleTracker` unwraps successive joint-angle differences. It assumes each difference is smaller than pi radians. The first reading establishes the baseline. Scoped joint names are reduced to identify `left_wheel_joint` and `right_wheel_joint`.
 
-## Running
+The controller publishes `Twist` commands through Gazebo DiffDrive. The braking profile uses `sqrt(2*a*remaining)`, bounded by minimum and maximum speeds. A nonzero minimum allows target crossing. After each segment the controller sends zero velocity and waits 0.25 s for settling.
 
-1. Stop old Gazebo / bridge sessions. Run `bash start_sim.sh` from the repository root.
-2. Confirm data in a second terminal: `ros2 topic echo /odom --once` and
-   `ros2 topic echo /joint_states --once`.
-3. In a ROS-enabled Python environment, run `python main.py`.
-4. Inspect `results/odometry_*.csv` and the controller's logs for planned and
-   measured wheel motion. The current `go_to(x, y)` calls do **not** adjust the final
-   robot heading after the straight segment.
+Both `/odom` and `/joint_states` must be fresh within one wall-clock second. Missing or stale feedback produces zero velocity. The control timer requests 100 Hz; SDF wheel feedback is configured at 50 Hz. On success, timeout, or interruption, `go_to` sends a stop command.
 
-If `/joint_states` is missing, verify the JointStatePublisher plugin in
-`Round_Robot/models/round_robot/model.sdf`, restart Gazebo and check the bridge.
-The program fails safe by publishing zero velocity when position or joint
-feedback is stale. Test only in an unobstructed environment: this algorithm
-will not avoid walls.
+## Worked first-waypoint example
 
-## Assignment 1 notes
+For the initial planar pose `(0, 0, 0)` and the first target `(1, 2)`:
 
-These measurements are used for motion execution and the existing logger records
-Gazebo's published odometry. To assess localization you still need an **independent
-noisy estimator** and Gazebo **ground truth**, which must not be used for navigation.
+```text
+turn angle = atan2(2, 1) = 1.107149 rad = 63.434949 degrees
+turn wheel targets = (-2.214297, +2.214297) rad
+straight distance = sqrt(5) = 2.236068 m
+straight wheel targets = (89.442719, 89.442719) rad
+```
+
+Later waypoints use the latest `/odom` pose rather than assuming exact arrival at the previous target.
+
+## Logging and interpretation
+
+`OdometryLogger` saves `/odom` poses. Independently, `NoisyWheelOdometry` maintains clean and noisy wheel estimates, and `LocalizationMetrics` compares them with timestamp-matched Gazebo truth. Ground truth never enters navigation or estimator correction.
+
+Executing the wheel targets does not guarantee exact physical arrival: contact effects, slip, sampling, and residual movement can produce error. See the root README for running commands and `Uncertainty.md` for estimator and metric definitions.

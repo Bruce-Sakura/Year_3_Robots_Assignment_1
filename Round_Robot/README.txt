@@ -1,4 +1,4 @@
-Round robot model with tread blocks and an elevated concept board
+Robotics Assignment 1 model notes
 
 The Raspberry Pi 6 board is a conceptual placeholder, using an 85 x 56 mm Pi 5 envelope and 58 x 49 mm mounting-hole spacing. Ports and chips are simplified visual representations; the model does not establish official Pi 6 mechanical dimensions.
 Four 28 mm standoffs support the board. Its underside is at z = 0.018 m, 12 mm above the motor tops.
@@ -13,4 +13,4 @@ Open round_robot.blend to inspect independent parts in metre units with applied 
 From the repository root, run bash start_sim.sh to launch Gazebo and ROS bridges, then python main.py in a ROS-enabled terminal to execute the three waypoints. Running python3 Round_Robot/main.py launches Gazebo only, without ROS bridges or navigation.
 Gazebo drive topics are /model/round_robot/cmd_vel and /model/round_robot/odometry. ROS uses /cmd_vel, /odom, /joint_states, and /ground_truth; ground truth is for evaluation only.
 For r = 0.025 m and b = 0.10 m: v = 0.0125 * (wR + wL) and yaw_rate = 0.25 * (wR - wL), with wheel speeds in rad/s.
-Masses and inertias are estimates. The chassis uses simplified collision geometry, caster balls use ball joints, and motors and brackets are visual parts. Stored experiment records are available, but this documentation update does not constitute a new dynamics validation.
+Masses and inertias are estimates. The chassis uses simplified collision geometry, caster balls use ball joints, and motors and brackets are visual parts. Recorded experiments are stored in results and results/old. The assignment evaluates clean and noisy wheel odometry against independent Gazebo truth; see the root README for the current dataset and commands.

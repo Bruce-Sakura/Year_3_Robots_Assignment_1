@@ -1,88 +1,69 @@
-# Week 2: Odometry Uncertainty, Ground Truth, Error Analysis, and RMSE
+# Wheel odometry uncertainty and localization evaluation
 
-This document describes the implementation in this checkout. It separates wheel-based estimation, motion execution, and independent simulator-truth evaluation. Stored results are experiment evidence; no new Gazebo run was performed for this documentation update.
+## Estimation inputs
 
-## Implementation Overview
+`src/localization/odometry_uncertainty.py` integrates unwrapped left/right wheel angles received through `/joint_states`. The initial planar pose is `(0, 0, 0)`, matching the world spawn's x, y, and yaw. Wheel geometry is read from `config/robot.yaml`: two 0.025 m radii and 0.10 m separation.
 
-1. Preserve the existing `TURN → DRIVE` sequence, using wheel-joint angle feedback to complete movements. Ground truth is not used for navigation.
-2. Calculate `Δs_L = r_L Δφ_L` and `Δs_R = r_R Δφ_R` from consecutive `/joint_states` readings, then compute `Δs = (Δs_L + Δs_R) / 2` and `Δθ = (Δs_R − Δs_L) / L`.
-3. Maintain two independent dead-reckoning trajectories: **clean** and **noisy**. These use `(Δs, Δθ)` and `(Δs + e_s, Δθ + e_θ)`, respectively, to update `(x, y, θ)` using the midpoint method introduced in the lecture slides.
-4. Model noise as `e_s ~ N(0, distance_std_m²)` and `e_θ ~ N(0, heading_std_rad²)`. Sample noise once for each incoming wheel-joint state message when the wheels are moving. The default wheel-state publication rate is 50 Hz.
-5. Add an **independent model ground-truth publisher** in Gazebo (`/model/round_robot/ground_truth`), bridged to ROS 2 as `/ground_truth`. Ground truth is used **only for evaluation**, not for `NoisyWheelOdometry` calculations, planning, or execution.
-6. Align and interpolate measurements using simulation message timestamps, record `position_error_m` for each frame, and calculate MSE, RMSE, final localization error, and the true final-position error relative to the latest requested waypoint (currently the last waypoint is `(3, 3)`). Generate trajectory and error-versus-time plots.
-7. Fix the duplicated DiffDrive plugin declarations in the repository's `model.sdf` (previously two declarations; only one should remain).
+Two estimates are maintained: a clean baseline and an estimate with injected measurement noise. Neither uses `/odom` or ground truth as a pose correction. Navigation separately uses `/odom` to plan waypoint motion.
 
-## Running the current implementation
+## Pose integration
 
-The uncertainty modules are already integrated. No external installation ZIP or `apply_to_repo.py` is required, and this checkout does not contain a `tests` directory.
+For consecutive wheel readings:
 
-Use Linux with ROS 2 Jazzy, Gazebo Harmonic, `ros_gz_bridge`, and a Python environment that can import `rclpy`, `PyYAML`, `numpy`, `pandas`, and `matplotlib`.
-
-From the repository root, start the simulation and bridges:
-
-```bash
-bash start_sim.sh
+```text
+dl = rL * (phiL_current - phiL_previous)
+dr = rR * (phiR_current - phiR_previous)
+ds = (dr + dl) / 2
+dtheta = (dr - dl) / b
+mid = theta + dtheta / 2
+x_next = x + ds * cos(mid)
+y_next = y + ds * sin(mid)
+theta_next = wrap(theta + dtheta)
 ```
 
-In a second ROS-enabled terminal:
+The first reading establishes a baseline without integrating displacement. Clean odometry uses the increments directly. Noisy odometry replaces them with `ds + distance_error` and `dtheta + heading_error` before applying the same midpoint method.
 
-```bash
-source /opt/ros/jazzy/setup.bash
-ros2 topic echo /ground_truth --once
-ros2 topic echo /joint_states --once
-ros2 topic echo /odom --once
-python main.py
-```
-
-The application executes `(1, 2)`, `(2, 1)`, and `(3, 3)` metres sequentially. After execution it reports matched sample count, MSE, RMSE, clean RMSE, heading RMSE, final localization error, and true final goal error when available. With no matched truth samples, it reports the missing data rather than an RMSE.
-
-New evaluation data is saved as `results/localization_YYYYMMDD_HHMMSS_microseconds.csv`. `/odom` poses are separately saved in `results/odometry_*.csv`. Historical runs remain in `results/old`.
-
-Generate the two plots with:
-
-```bash
-python scrips/plot_localization.py
-```
-
-The script selects the most recently modified localization CSV in `results` and saves `_trajectory.png` and `_error.png` beside it. It currently takes no CSV argument.
-
-For an existing model with missing topics, inspect `scrips/fix_diffdrive.py` and `scrips/fix_ground_truth.py` before applying them. These helpers edit simulation configuration and create backups. Restart Gazebo and the bridge after changing SDF or bridge settings.
-
-## Error Metrics and Loss Definitions
-
-- **Position error at time `t`:** `e_t = sqrt((x_est − x_gt)² + (y_est − y_gt)²)`.
-- **Trajectory mean squared error (MSE):** `MSE = mean(e_t²)`, measured in `m²`.
-- **Localization root mean squared error (RMSE):** `RMSE = sqrt(MSE)`, measured in `m`, providing a more interpretable reporting metric.
-- **Final localization error:** `hypot(last_est_x − last_gt_x, last_est_y − last_gt_y)`.
-- **Final goal error:** `hypot(last_gt_x − target_x, last_gt_y − target_y)`. This measures the true final position's distance from the target, **not** localization error.
-- **Clean RMSE:** A baseline without additional random measurement noise, representing differences between the wheel-motion model and the ground-truth trajectory.
-
-## Configuration
-
-`config/experiment.yaml`:
+## Noise configuration
 
 ```yaml
 odometry_noise:
-  distance_std_m: 0.0002   # Translation measurement standard deviation per 50-Hz wheel-state sample
-  heading_std_rad: 0.001   # Heading measurement standard deviation per 50-Hz wheel-state sample
-  seed: 42                 # Fixed random seed for reproducible experiments
+  distance_std_m: 0.0002
+  heading_std_rad: 0.001
+  seed: 42
 ```
 
-For a baseline experiment, first set both standard deviations to `0.0`. Then increase each noise level separately to conduct comparative experiments. **This is a discrete measurement-noise model for experimentation. The parameter values are illustrative and are not based on measurements from physical sensors.** The resulting error magnitude depends on the JointState sampling rate.
+These are independent zero-mean Gaussian standard deviations per moving wheel sample. The generator uses the configured seed. Noise is sampled when the sum of absolute wheel-angle increments exceeds `1e-9`; stationary samples receive no injected noise. Sampling follows incoming joint messages, configured at 50 Hz, rather than the 100 Hz control callback.
 
-Keep `config/robot.yaml` limited to the left and right wheel radii and wheel separation. Do not place the target position or experimental noise settings in this file.
+The values define a simulation experiment and are not measured sensor characteristics. Set both standard deviations to zero for a baseline comparison, and restart from the same initial pose for an independent trial. Robot geometry remains in `robot.yaml`; noise remains in `experiment.yaml`.
 
-## Timing and Update Rates
+## Independent ground truth and time matching
 
-- `create_timer(0.01, ...)` requests a control update rate of **100 Hz**.
-- `create_timer(0.0001, ...)` requests **10,000 Hz**, far above the current 50-Hz JointState update rate. This rate is not guaranteed to be achieved and does not necessarily improve accuracy.
-- Gazebo's `max_step_size=0.001` specifies a maximum physics simulation time step of **0.001 s** (an idealized simulation step rate of 1 kHz), not the ROS 2 controller callback rate.
-- The uncertainty model currently injects noise for each `/joint_states` message, independently of the controller's `create_timer()` frequency.
+The SDF PosePublisher publishes `/model/round_robot/ground_truth`, bridged to `/ground_truth` as `PoseStamped`. `LocalizationMetrics` uses its simulation timestamp to bracket pending estimates between two consecutive truth poses. It interpolates x and y linearly and heading along the shortest wrapped angular difference.
 
-## Troubleshooting
+Samples older than the available bracket are dropped. Future samples wait for the next bracket. Truth intervals longer than 0.10 s are rejected. Duplicate or decreasing truth timestamps are ignored. The pending estimate queue is capped at 1,000 entries when truth is unavailable.
 
-- **No output from `/ground_truth`:** Make sure Gazebo has been **restarted** so that the modified SDF is reloaded. Check the Gazebo topics with `gz topic -l | grep ground_truth`.
-- **A CSV is generated but no samples can be matched:** `LocalizationMetrics` reports `No timestamp-matched ground truth samples`. It **does not fabricate an RMSE value**.
-- **Inconsistent timestamps or initial poses:** If topics use different time bases, or the robot's initial pose is not `(0, 0, 0)`, align the simulation timestamps and use the known initial pose before comparing trajectories.
-- **Coursework evaluation:** To further meet the assignment requirements, consider repeated trials comparing different noise levels and random seeds.
-- **Ground-truth separation:** During execution, the robot still uses `/odom` for initial-pose planning and `/joint_states` for control. Ground truth is never used for navigation.
+Ground truth is evaluation input only. It is not passed to the wheel estimator or motion planner. Reset the simulation and restart the Python process together for a new trial so the known initial estimator pose remains valid.
+
+## Output and metrics
+
+`results/localization_*.csv` contains `time_s`, noisy pose (`x_est_m`, `y_est_m`, `theta_est_rad`), clean pose, ground-truth pose, `position_error_m`, `clean_error_m`, and `heading_error_rad`.
+
+For N matched samples:
+
+```text
+position_error = hypot(x_est - x_gt, y_est - y_gt)
+clean_error = hypot(x_clean - x_gt, y_clean - y_gt)
+heading_error = wrap(theta_est - theta_gt)
+MSE = sum(position_error^2) / N
+RMSE = sqrt(MSE)
+clean_RMSE = sqrt(sum(clean_error^2) / N)
+heading_RMSE = sqrt(sum(heading_error^2) / N)
+```
+
+Position RMSE is in metres; MSE is in square metres. The summary reports heading RMSE in degrees. Final localization error compares the last matched estimate with truth. Final goal error compares the last matched truth position with the latest requested waypoint. These measure different quantities.
+
+The current application requests `(1, 2)`, `(2, 1)`, and `(3, 3)` metres, so the latest goal is normally `(3, 3)`. If execution stops earlier, the latest requested waypoint is used. With zero matched samples, the logger reports the missing data and CSV path without computing RMSE.
+
+`results/odometry_*.csv` separately records `/odom` poses. `scrips/plot_localization.py` selects the most recently modified localization CSV in `results` and writes trajectory and error plots beside it. It takes no CSV path argument. Run instructions and the recorded three-waypoint results are in the root README.
+
+Clean estimates can differ from truth due to wheel/contact behaviour and kinematic approximation. A noisy trajectory can momentarily have smaller error when random increments cancel another error. One seed and one trajectory do not establish statistical performance across trials.
